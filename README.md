@@ -288,15 +288,24 @@ Call `createSubscriptionManager`, for example:
 
 This deploys a **brand-new SubscriptionManager contract**, fully independent and owned by your issuer address.
 
-#### 7. Interact with your Manager
-Use the returned manager address to:
+### 7. Interact with your Manager
+After creating a SubscriptionManager, copy the returned **manager contract address**.
+
+In Remix:
+
+1. Select `Manager.abi` in your file explorer
+2. Go to **Deploy & Run Transactions**
+3. Use **“At Address”** and paste the manager contract address
+4. Click **At Address** to attach the contract interface
+
+Once attached, you can:
+
 - Create subscriptions
-- Authorize or revoke account
-- Extend subscriptions  
+- Authorize or revoke accounts
+- Extend subscriptions
 - Query access via `getAccess(address)`
 
 All managers are isolated and configurable at creation time.
-
 
 ### Need help with Remix or Polkadot?
 
