@@ -288,7 +288,7 @@ Call `createSubscriptionManager`, for example:
 
 This deploys a **brand-new SubscriptionManager contract**, fully independent and owned by your issuer address.
 
-### 7. Interact with your Manager
+#### 7. Interact with your Manager
 After creating a SubscriptionManager, copy the returned **manager contract address**.
 
 In Remix:
