@@ -138,6 +138,7 @@ The issuer calls the Factory:
 
 ```solidity
 createSubscriptionManager(
+        address issuer,
         uint256 defaultDuration,
         uint256 maxAccounts,
         uint256 maxModifications
@@ -167,8 +168,8 @@ createSubscription(address owner, uint256 planId, uint256 duration)
 ### 3. Manage accounts (issuer)
 
 ```solidity
-authorizeAccount(uint256 subscriptionId, address account)
-revokeAccount(uint256 subscriptionId, address account)
+authorizeAccount(address owner, address account)
+revokeAccount(address owner, address account)
 ```
 
 All account management is performed by the issuer.
@@ -204,10 +205,10 @@ ManagerCreated(address manager, address issuer)
 ### SubscriptionManager
 
 ```solidity
-SubscriptionCreated(uint256 subscriptionId, address owner, uint256 planId, uint256 expiresAt)
-SubscriptionExtended(uint256 subscriptionId, uint256 newExpiresAt)
-AccountAuthorized(uint256 subscriptionId, address account)
-AccountRevoked(uint256 subscriptionId, address account)
+SubscriptionCreated(address owner, uint256 planId, uint256 expiresAt)
+SubscriptionExtended(address owner, uint256 newExpiresAt)
+AccountAuthorized(address owner, address account)
+AccountRevoked(address owner, address account)
 ```
 
 Applications can index these events to sync off-chain state.
