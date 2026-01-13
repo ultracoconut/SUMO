@@ -27,6 +27,7 @@ Manages subscriptions, account authorization, plans, and access verification for
 | revokeAccount | address owner, address account | — | Issuer only | Revokes access for a previously authorized account. Updates authorizedCount and modificationCount. Emits AccountRevoked. |
 | changeIssuer | address newIssuer | — | Issuer only | Changes the issuer of this SubscriptionManager. Emits nothing. |
 | getAccess | address account | hasAccess: bool, planId: uint256, expiresAt: uint256, isOwner: bool | Anyone | Returns the subscription access details for the given account. Read-only, no gas required. |
+| totalSubscriptions | — | uint256 | Anyone | Returns the total number of subscriptions created in the manager.
 
 
 ### 3. Events
