@@ -23,11 +23,11 @@ Manages subscriptions, account authorization, plans, and access verification for
 |----------|--------|---------|-------------|-------------|
 | createSubscription | address owner, uint256 planId, uint256 duration | — | Issuer only | Creates a new subscription for the owner with the specified plan and duration. Owner is automatically authorized. Emits SubscriptionCreated. |
 | extendSubscription | address owner, uint256 extraDuration | — | Issuer only | Extends an existing subscription by extraDuration (seconds). Emits SubscriptionExtended. |
-| authorizeAccount | address owner, address account | — | Issuer only | Authorizes a new account under the given subscription. Updates authorizedCount and modificationCount. Emits AccountAuthorized. |
-| revokeAccount | address owner, address account | — | Issuer only | Revokes access for a previously authorized account. Updates authorizedCount and modificationCount. Emits AccountRevoked. |
-| changeIssuer | address newIssuer | — | Issuer only | Changes the issuer of this SubscriptionManager. Emits nothing. |
+| authorizeAccount | address owner, address account | — | Issuer only | Authorizes a new account under the given subscription. Emits AccountAuthorized. |
+| revokeAccount | address owner, address account | — | Issuer only | Revokes access for a previously authorized account. Emits AccountRevoked. |
+| changeIssuer | address newIssuer | — | Issuer only | Changes the issuer of this SubscriptionManager. Emits IssuerChanged. |
 | getAccess | address account | hasAccess: bool, planId: uint256, expiresAt: uint256, isOwner: bool | Anyone | Returns the subscription access details for the given account. Read-only, no gas required. |
-| totalSubscriptions | — | uint256 | Anyone | Returns the total number of subscriptions created in the manager.
+| totalSubscriptions | — | uint256 | Anyone | Returns the total number of subscriptions created in the manager.|
 
 
 ### 3. Events
@@ -38,4 +38,4 @@ Manages subscriptions, account authorization, plans, and access verification for
 | SubscriptionExtended | address owner, uint256 newExpiresAt | Emitted when a subscription is extended. |
 | AccountAuthorized | address owner, address account | Emitted when a new account is authorized under a subscription. |
 | AccountRevoked | address owner, address account | Emitted when an authorized account is revoked. |
-IssuerChanged | address newIssuer | Emitted when the issuer of a SubscriptionManager is changed. |
+|IssuerChanged | address newIssuer | Emitted when the issuer of a SubscriptionManager is changed. |
