@@ -20,19 +20,6 @@
 	},
 	{
 		"inputs": [],
-		"name": "MAX_ACCOUNTS",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "MAX_DEFAULT_DURATION",
 		"outputs": [
 			{
@@ -47,6 +34,19 @@
 	{
 		"inputs": [],
 		"name": "MAX_MODIFICATIONS",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_SECUNDARY_ACCOUNTS",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -84,7 +84,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "maxAccounts",
+				"name": "maxSecundaryAccounts",
 				"type": "uint256"
 			},
 			{
