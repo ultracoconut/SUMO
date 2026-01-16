@@ -28,6 +28,8 @@ Manages subscriptions, account authorization, plans, and access verification for
 | changeIssuer | address newIssuer | — | Issuer only | Changes the issuer of this SubscriptionManager. Emits IssuerChanged. |
 | getAccess | address account | hasAccess: bool, planId: uint256, expiresAt: uint256, isOwner: bool | Anyone | Returns the subscription access details for the given account. Read-only, no gas required. |
 | totalSubscriptions | — | uint256 | Anyone | Returns the total number of subscriptions created in the manager.|
+| getSecondaryAccounts | address owner | accounts: address[], active: bool | Anyone | Returns the list of secondary accounts linked to a subscription. active is false if subscription expired or owner not found. |
+| hasFreeSlot | address owner | bool | Anyone | Returns true if the subscription has space for additional secondary accounts. |
 
 
 ### 3. Events
