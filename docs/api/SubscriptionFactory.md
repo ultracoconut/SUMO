@@ -1,7 +1,3 @@
-# SUMO Smart Contracts API Reference
-
-## Reference guide for developers integrating or interacting with SUMO smart contracts.
-
 ## SubscriptionManagerFactory API
 
 **Purpose:**  
