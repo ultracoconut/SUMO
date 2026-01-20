@@ -8,8 +8,10 @@ Use this as a reference for API integration and frontend error handling.
 
 | Error | Meaning |
 |-------|---------|
-| `InvalidAddress` | The provided address is 0 or otherwise invalid. |
-| `InvalidSubscriptions` | Maximum subscriptions value is 0 or exceeds allowed limits. |
+| `Invalid issuer` | Provided issuer address is 0 or otherwise invalid. |
+| `Invalid defaultDuration` | `defaultDuration` must be greater than 0 and not exceed the maximum allowed duration (5 years). |
+| `Invalid maxAccounts` | `maxSecundaryAccounts` exceeds the maximum allowed secondary accounts per subscription (5). |
+| `Invalid maxModifications` | `maxModifications` exceeds the maximum allowed number of modifications per subscription (20). |
 
 ## SubscriptionManager Errors
 
