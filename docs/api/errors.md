@@ -1,4 +1,4 @@
-## Reference Errors
+## Error Reference
 
 This document lists all errors thrown by **Factory** and **Manager** contracts, along with their meaning.  
 
