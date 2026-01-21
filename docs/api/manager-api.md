@@ -1,4 +1,4 @@
-## SubscriptionManager API
+## Manager API
 
 **Purpose:**  
 Manages subscriptions, account authorization, plans, and access verification for a single SaaS product.
