@@ -1,4 +1,4 @@
-## SubscriptionManagerFactory API
+## Factory API
 
 **Purpose:**  
 Deploys and configures independent SubscriptionManager instances.
