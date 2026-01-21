@@ -1,10 +1,10 @@
-# SUMO Smart Contracts Errors
+## Reference Errors
 
-This document lists all errors thrown by **SubscriptionManagerFactory** and **SubscriptionManager** contracts, along with their meaning.  
+This document lists all errors thrown by **Factory** and **Manager** contracts, along with their meaning.  
 
 Use this as a reference for API integration and frontend error handling.
 
-## SubscriptionManagerFactory Errors
+## Factory Errors
 
 | Error | Meaning |
 |-------|---------|
@@ -13,7 +13,7 @@ Use this as a reference for API integration and frontend error handling.
 | `Invalid maxAccounts` | `maxSecundaryAccounts` exceeds the maximum allowed secondary accounts per subscription (5). |
 | `Invalid maxModifications` | `maxModifications` exceeds the maximum allowed number of modifications per subscription (20). |
 
-## SubscriptionManager Errors
+## Manager Errors
 
 | Error | Meaning |
 |-------|---------|
