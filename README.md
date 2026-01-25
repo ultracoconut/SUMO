@@ -317,70 +317,16 @@ All managers are isolated and configurable at creation time.
 If you are not familiar with Remix or Polkadot smart-contract environments, you can follow the official Polkadot  
 [guide](https://docs.polkadot.com/develop/smart-contracts/dev-environments/remix/).
 
-## 🧑‍💻 Node.js Example (Read-only Access Check)
 
-SUMO can be integrated into any backend or application using a simple read-only RPC call.  
-No wallet connection, signatures, or gas payments are required.
+## ▶️ Getting Started
 
-### Requirements
-- Node.js **v18+**
-- `ethers` v6
+This README explains the SUMO architecture, roles, and on-chain model at a high level.
 
-```bash
-npm install ethers
-```
+If you want to see **practical examples** of how to interact with a deployed `SubscriptionManager`
+(from verifying access to creating subscriptions), check the usage guides below.
 
-### Example: Verify subscription access
-
-```javascript
-import { ethers } from "ethers";
-import ManagerABI from "./Manager.json" assert { type: "json" };
-
-// Paseo Asset Hub EVM RPC
-const provider = new ethers.JsonRpcProvider(
-  "https://testnet-passet-hub-eth-rpc.polkadot.io"
-);
-
-// Deployed SubscriptionManager address
-const MANAGER_ADDRESS = "0xYOUR_MANAGER_ADDRESS_HERE";
-
-// Account to check access for
-const userAddress = "0xUSER_ADDRESS_HERE";
-
-async function checkAccess() {
-  const manager = new ethers.Contract(
-    MANAGER_ADDRESS,
-    ManagerABI,
-    provider
-  );
-
-  const access = await manager.getAccess(userAddress);
-  console.log(access);
-}
-
-checkAccess();
-```
-
-### Example response
-
-```javascript
-{
-  hasAccess: true,
-  planId: 1n,
-  expiresAt: 1712345678n,
-  isOwner: false
-}
-```
-Numeric values are returned as `BigInt` when using ethers v6.
-
-**Notes**
-- This is a read-only call 
-- No signer or private key is required 
-- No gas is consumed 
-- All `SubscriptionManager` instances share the same ABI — only the contract address changes
-
-**More examples in** [Getting Started](docs/getting-started/interactions-with-manager.md) 
-
+👉 **Usage examples and integration guides:**  
+[Getting Started – Interacting with SubscriptionManager](docs/getting-started/interactions-with-manager.md)
 
 
 ## 📚 API Documentation
