@@ -1,4 +1,4 @@
-# Auth0 → SUMO Adapter
+# Auth0 → Akxesa Adapter
 
 Author: @Ultracoconut  
 License: MIT  
@@ -6,11 +6,11 @@ Note: This is example/demo code. It may contain bugs and is not production-ready
 
 ### Overview
 
-This script automatically maps Auth0 users to SUMO on-chain addresses
+This script automatically maps Auth0 users to Akxesa on-chain addresses
 
 - Run this as an Auth0 PostLogin Action
 
-- Auth0 users get a new random H160 address (Ethereum-style) as their SUMO owner address
+- Auth0 users get a new random H160 address (Ethereum-style) as their Akxesa owner address
 
 - Existing mappings are preserved
 
@@ -20,7 +20,7 @@ This script automatically maps Auth0 users to SUMO on-chain addresses
 
 - No blockchain interactions are performed here; the address is just registered
 
-- Fully compatible with SUMO Subscription Manager
+- Fully compatible with Akxesa Subscription Manager
 
 ### Usage
 
@@ -31,20 +31,20 @@ exports.onExecutePostLogin = async (event, api) => {
   const userEmail = event.user.email;
 
   // Already mapped → do nothing
-  if (event.user.app_metadata?.sumo_address) return;
+  if (event.user.app_metadata?.akxesa_address) return;
 
   // Generate deterministic Ethereum-like identifier
   const raw = hexlify(randomBytes(20));
-  const sumoAddress = getAddress(raw);
+  const akxesaAddress = getAddress(raw);
 
   // Persist mapping
-  api.user.setAppMetadata("sumo_address", sumoAddress);
+  api.user.setAppMetadata("akxesa_address", akxesaAddress);
 
   console.log(
-    `SUMO identity created: ${userEmail} → ${sumoAddress}`
+    `Akxesa identity created: ${userEmail} → ${akxesaAddress}`
   );
 };
 ```
 
 ### Notes:
-- Use the `sumo_address` in Auth0 `app_metadata` to interact with the SUMO SubscriptionManager
+- Use the `akxesa_address` in Auth0 `app_metadata` to interact with the Akxesa Subscription Manager
