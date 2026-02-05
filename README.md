@@ -1,16 +1,16 @@
-# SUMO - Subscription Manager On-chain
+# Akxesa - The source of truth for SaaS access
 
-## About SUMO
+## About Akxesa
 
-**SUMO** is an on-chain subscription and licensing system for SaaS platforms.
+**Akxesa** is an on-chain subscription and licensing system for SaaS platforms.
 
 It provides verifiable, decentralized access control using smart contracts, while remaining compatible with both Web3-native and traditional Web2 SaaS products.
 
-SUMO is built on **Polkadot Asset Hub** and is currently being tested on **Paseo Passet Hub (testnet)**.  
+Akxesa is built on **Polkadot Asset Hub** and is currently being tested on **Paseo Passet Hub (testnet)**.  
 
 ## 🎯 UX & Design Philosophy
 
-SUMO is designed for real-world SaaS adoption, not just Web3-native users.
+Akxesa is designed for real-world SaaS adoption, not just Web3-native users.
 
 The system intentionally removes common blockchain UX barriers while preserving on-chain guarantees.  
 To enable a broader reach and a better user experience:
@@ -33,17 +33,17 @@ Users simply connect a wallet to verify access.
 - Gas management
 - Web3 onboarding complexity
 
-SUMO acts as an on-chain access layer, not an intermediary.
+Akxesa acts as an on-chain access layer, not an intermediary.
 
 ## 🔑 Account Model
 
-SUMO smart contracts operate exclusively on `EVM address (H160)`.
+Akxesa smart contracts operate exclusively on `EVM address (H160)`.
 
 The contracts themselves only verify access rights for a given on-chain address.
 
 Any identity model (Web3 wallets, Substrate accounts, Web2 users, custodial accounts, or external systems) can be supported by the application layer, as long as it resolves to an EVM-compatible address when interacting with the contracts.
 
-This separation keeps SUMO contracts minimal, auditable, and chain-native, while allowing applications full flexibility over identity and UX design.  
+This separation keeps Akxesa contracts minimal, auditable, and chain-native, while allowing applications full flexibility over identity and UX design.  
 
 ## 🧠 High-level architecture
 
@@ -237,9 +237,9 @@ Applications can index these events to sync off-chain state.
 - Multi-device access control
 
 
-## 🧪 Try SUMO (Testnet)
+## 🧪 Try Akxesa (Testnet)
 
-You can try **SUMO - Subscription Manager On-chain** without accessing the source code.
+You can try **Akxesa - Subscription Manager On-chain** without accessing the source code.
 
 A **SubscriptionManagerFactory** is already deployed on-chain.  
 You can create your own independent `SubscriptionManager` and test the full flow using **Remix** and **MetaMask**.
@@ -320,7 +320,7 @@ If you are not familiar with Remix or Polkadot smart-contract environments, you 
 
 ## ▶️ Getting Started
 
-This README explains the SUMO architecture, roles, and on-chain model at a high level.
+This README explains the Akxesa architecture, roles, and on-chain model at a high level.
 
 If you want to see **practical examples** of how to interact with a deployed `SubscriptionManager`
 (from verifying access to creating subscriptions), check the usage guides below.
