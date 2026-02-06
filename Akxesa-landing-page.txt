@@ -1,61 +1,84 @@
-Akxesa Landing Page Brief
-Objective:
-Introduce Akxesa as an on-chain subscription and licensing system for SaaS. Highlight simplicity for users, security, Web2/Web3 compatibility, and encourage testnet trials. Target audience: SaaS developers and advanced users.
+Akxesa Landing Page – Wireframe Brief
 1️⃣ Hero / Main Header
+
 Headline:
 “Akxesa – The source of truth for SaaS access”
+
 Subheadline:
 “On-chain subscription and licensing for SaaS platforms, without wallet friction or gas costs for your users.”
-Primary CTA button:
-“Try on Testnet” → link to testnet
-Visual suggestion: Illustration showing users accessing SaaS services via blockchain without complexity.
-2️⃣ About Akxesa / What is Akxesa
-Summary text:
-“Akxesa is an on-chain subscription and licensing system for SaaS platforms. It provides verifiable, decentralized access control using smart contracts, while remaining compatible with both Web3-native and traditional Web2 SaaS products.”
-Key points (bullets):
-Built on Polkadot Asset Hub
-Compatible with Web2 and Web3
-No tokens, no gas, no signatures required from users
-Visuals: Optional icons for UX simplicity, security, and transparency.
-3️⃣ UX & Design Philosophy
-Highlight:
-Users do not need tokens or signatures
-Gas is covered by the SaaS
-Transparency and auditability
-Suggested headline:
-“Blockchain power, zero user friction”
-4️⃣ Account Model / Roles
-Roles summary:
-Issuer: Manages subscriptions
-Owner: Primary account of the subscription
-Authorized account: Can access the service but cannot modify subscriptions
-Visual suggestion: Simple diagram showing roles and access flow.
-5️⃣ High-Level Architecture
-Summary text:
-“Each SaaS deploys a SubscriptionManager via a Factory. Managers are independent, immutable, and fully controlled by the issuer. End users only connect wallets to verify access.”
-Visual suggestion: Diagram: Factory → SubscriptionManager → Users
-6️⃣ Basic Flow / How it works
-Steps:
-Create SubscriptionManager
-Create a subscription
-Authorize/revoke accounts
-Verify access (read-only, no gas or signatures required)
-Visual suggestion: Flowchart or timeline
-7️⃣ Use Cases
-Web3-native SaaS subscriptions
-Software licensing
-Multi-device access control
-8️⃣ Final CTA
-Button: “Try Akxesa on Testnet”
-Subtext:
-“Create your SubscriptionManager and test the full flow using Remix and MetaMask.”
-9️⃣ Optional / Additional Info
-Link to documentation (API, usage guides)
-Security: Only issuer can modify state, no personal data stored on-chain
 
-  📌 Notes
-Style reference: GitHub – clean, clear, simple layout, readable typography
-Copy: Editable; suggestions welcome
-Tone: Technical but approachable for developers and SaaS operators
-Layout: Responsive (desktop and mobile)
-Visuals: Diagrams for account model, architecture, and flow
+CTA button: “Try on Testnet” → link to testnet
+
+Visual placeholder: Illustration of users accessing SaaS without blockchain friction
+
+2️⃣ What is Akxesa
+
+Summary bullets:
+
+Verifiable, decentralized access control for SaaS
+
+Compatible with Web2 and Web3 platforms
+
+Users need no tokens, no signatures, and no gas
+
+Visual placeholder: Icon set representing security, simplicity, and Web3 compatibility
+
+3️⃣ How it Works / Flow
+
+Steps bullets:
+
+Deploy SubscriptionManager via Factory
+
+Create subscription
+
+Authorize/revoke accounts
+
+Verify access (read-only, no gas, no signatures)
+
+Visual placeholder: Simple flow diagram or timeline
+
+4️⃣ Roles
+
+Roles bullets:
+
+Issuer: Manages subscriptions
+
+Owner: Primary subscription account
+
+Authorized account: Can access service, cannot modify
+
+Visual placeholder: Diagram showing relationship between Issuer → Subscription → Users
+
+5️⃣ Use Cases
+
+SaaS subscriptions (Web3-native or hybrid)
+
+Software licensing
+
+Multi-device access control
+
+Visual placeholder: Icons or small illustrations for each use case
+
+6️⃣ CTA / Try it Now
+
+Button: “Try Akxesa on Testnet”
+
+Subtext: “Create your SubscriptionManager and test the full flow using Remix and MetaMask.”
+
+Visual placeholder: Highlighted CTA section
+
+7️⃣ Optional / Extra Info
+
+Link to full docs / GitHub for technical details
+
+Security note: only issuer can modify state; no personal data stored on-chain
+
+📌 Notes
+
+Style reference: GitHub – clean, clear, simple layout
+
+Copy is editable; focus on clarity for developers and SaaS operators
+
+Layout must be responsive (desktop + mobile)
+
+Include diagrams for flow and roles
