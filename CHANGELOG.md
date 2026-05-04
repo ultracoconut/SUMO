@@ -22,3 +22,25 @@
 - Improved clarity and consistency between on-chain state and off-chain consumers.
 - Clear separation between **subscription state** and **access rights**.
 - No additional storage, counters, or gas overhead introduced.
+
+
+
+## v1.2
+
+### Added
+- `cancelSubscription()` to allow termination of active subscriptions.
+- `hasSubscription(address)` view to check if a subscription exists.
+- `isActive(address)` view to check current validity state.
+
+### Changed
+- Refactored subscription model to reduce redundant state variables.
+- Improved `getAccess()` for clearer separation between identity and access state.
+- Strengthened validation logic in account authorization flow.
+
+### Optimized
+- Reduced overall storage usage.
+- Simplified subscription state management.
+
+### 🔒 Security Improvements
+- Improved consistency of access resolution logic.
+- Added stricter checks for account linking and authorization flows.
