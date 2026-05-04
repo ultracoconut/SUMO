@@ -51,8 +51,8 @@ Add `Factory.abi` and `Manager.abi` to your Remix directory
 #### 5. Attach the Factory contract
 In Remix, select `Factory.abi` in your directory
 
-Select Deploy & run transactions in the left menu, use **"At Address"** and attach this contract (v1.1) address:  
-`0x83448DC5A6Ac6975204B0409D3374F0F65f716B9`
+Select Deploy & run transactions in the left menu, use **"At Address"** and attach this contract (v1.2) address:  
+`0xDa432efB6c6357Cb7f6146697BD57F96049cE5D8`
 
 Now you can access the contract methods.
 
