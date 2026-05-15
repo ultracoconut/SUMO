@@ -19,9 +19,7 @@ It provides a simple API to manage on-chain subscriptions, verify access, and ha
 
 ## Installation
 
-```bash
-npm install @akxesa/sdk
-```
+Coming soon on npm.
 
 ## Setup
 
