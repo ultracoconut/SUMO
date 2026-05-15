@@ -1,0 +1,41 @@
+{
+  "name": "@akxesa/sdk",
+  "version": "0.1.0",
+  "description": "Akxesa SDK - deterministic SaaS access control using on-chain subscriptions",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "saas",
+    "access-control",
+    "blockchain",
+    "subscriptions",
+    "web3",
+    "backend",
+    "sdk"
+  ],
+  "author": "@Ultracoconut",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.3"
+  }
+}
