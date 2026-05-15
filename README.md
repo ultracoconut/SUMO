@@ -1,134 +1,137 @@
-# Akxesa - The source of truth for SaaS access
+# Akxesa SDK
 
-Sell SaaS subscriptions with verifiable access control.
+Akxesa SDK is a TypeScript/Node.js library for interacting with the **Akxesa Subscription Manager smart contract**.
 
-Akxesa lets you eliminate your subscription database and verify access on-chain while keeping your existing backend architectures and authentication providers.
+It provides a simple API to manage on-chain subscriptions, verify access, and handle deterministic blockchain identities across different authentication providers (Auth0, Firebase, etc).
 
-## ⚡  Quickstart (5 minutes)
 
-1. Create your SubscriptionManager → https://www.akxesa.com/app  
-2. Derive a deterministic address from your user ID (Auth0, Firebase, etc.) using [Akxesa Universal ID Adapter](docs/getting-started/integrations/universal-id-adapter.md)
-3. Call `getAccess(address)` from your backend  
+## Features
 
-That’s it. No subscription database required.
+- Create and manage subscriptions on-chain
+- Verify subscription access
+- Deterministic user identity resolution
+- Supports both:
+  - EVM wallet addresses (`0x...`)
+  - External auth IDs (Auth0, Firebase, etc.)
+- Built on **ethers v6**
+- Fully TypeScript compatible
 
-## 📖 About Akxesa
 
-Akxesa is a deterministic subscription and licensing system designed for SaaS platforms.
+## Installation
 
-It provides verifiable access control using smart contracts, while remaining fully compatible with traditional authentication systems and backend architectures.
-
-Akxesa is built on Polkadot Asset Hub and currently runs on Paseo Asset Hub (testnet).
-
-## 🎯 Design Principles
-
-Akxesa is designed for real-world SaaS adoption.
-
-- No wallets, tokens, or user signatures  
-- Fully compatible with existing auth systems  
-- Backend-controlled (issuer handles all operations)  
-
-Users never interact with the system directly.
-
-This provides:
-- Deterministic access control  
-- Verifiable state  
-- No user friction  
-  
-## 🧩 Roles
-
-- **Issuer (backend)** → controls subscription state  
-- **Subscriber (owner)** → primary account of a subscription  
-- **Linked accounts** → additional accounts with shared access  
-
-## 🚀 Basic Flow
-
-### 1. Create SubscriptionManager
-Deploy a manager via the Factory:
-
-```solidity
-createSubscriptionManager(
-  address issuer,
-  uint256 defaultDuration,
-  uint256 maxSecondaryAccounts,
-  uint256 maxModifications
-)
+```bash
+npm install @akxesa/sdk
 ```
 
-### 2. Create subscription (issuer)
+## Setup
 
-```solidity
-createSubscription(address owner, uint256 planId, uint256 duration)
+```ts
+import { Akxesa } from "@akxesa/sdk";
+
+const akxesa = new Akxesa({
+  rpcUrl: "https://eth-rpc-testnet.polkadot.io/",
+  managerAddress: "0xYourManagerContractAddress",
+  privateKey: "0xYourPrivateKey"
+});
 ```
 
-### 3. Manage accounts (issuer)
+## Identity
 
-```solidity
-authorizeAccount(address owner, address account)
-revokeAccount(address owner, address account)
+Akxesa supports two types of user identifiers:
+
+1. EVM Address (direct usage)
+
+```ts
+userId: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 ```
 
-### 4. Verify access (application)
+2. External Auth ID (deterministic mapping)
 
-```solidity
-getAccess(address account)
+```ts
+userId: "auth0|123456"
+userId: "firebase|uid_ABC"
+userId: "google-oauth2|98765"
 ```
 
-Returns:
+## Create a Subscription
 
-- hasAccess - true / false
+```ts
+const tx = await akxesa.createSubscription({
+  userId: "auth0|123456",
+  planId: 1,
+  duration: 0
+});
 
-- planId - active plan
+console.log("TX Hash:", tx.hash);
 
-- expiresAt - expiration timestamp
+const receipt = await tx.wait();
 
-- isOwner - whether the account is the owner  
-
-  ✅ Read-only call  
-  ✅ No gas  
-  ✅ No wallet signature
+console.log("Block:", receipt.blockNumber);
+```
 
 
-## 🌍 Use Cases
+## Extend Subscription
 
-- SaaS subscription management without a database  
-- Software licensing without centralized control  
-- Multi-device access (e.g. 5 seats per subscription)  
-- Shared subscription plans  
+```ts
+await akxesa.extendSubscription({
+  userId: "auth0|123456",
+  extraDuration: 3600
+});
+```
 
-## ▶️ Getting Started
+## Check Access
 
-### Create your SubscriptionManager
-Create and configure your own independent SubscriptionManager using the Akxesa app:
+```ts
+const access = await akxesa.getAccess("auth0|123456");
 
-👉 https://www.akxesa.com/app
+console.log(access);
+```
+### Response
 
-### Backend integration
-Learn how to integrate Akxesa into your SaaS backend:
+```ts
+{
+  hasAccess: true,
+  activePlanId: 1,
+  expiration: 1712345678n,
+  isPrimary: true
+}
+```
 
-👉 [Backend Integration Guide](docs/getting-started/integrations/backend-integration.md)
+## Authorize Secondary Account
 
-### Manual interaction (advanced)
-Interact directly with the contracts using Remix and MetaMask:
+```ts
+await akxesa.authorizeAccount({
+  ownerUserId: "auth0|owner",
+  accountUserId: "auth0|secondary"
+});
+```
 
-👉 [Manual Interaction Guide](docs/getting-started/manual-interaction.md)
+## Revoke account
 
-## 📚 API Documentation
-Complete smart contract interface reference
-- [Factory API](docs/api/factory-api.md)
-- [Manager API](docs/api/manager-api.md)
-- [Error Reference](docs/api/errors.md)
+```ts
+await akxesa.revokeAccount({
+  ownerUserId: "auth0|owner",
+  accountUserId: "auth0|secondary"
+});
+```
 
-## 📄 Technical Specification
+## Change Plan
 
-Learn how Akxesa works under the hood, including its architecture, account model, and system limits.
+```ts
+await akxesa.changePlan({
+  userId: "auth0|123456",
+  newPlanId: 2
+});
+```
 
-👉 [Technical Specification](docs/technical-specification.md)
+## Read Methods
 
-## 📜 License
+```ts
+await akxesa.hasSubscription("auth0|123456");
+await akxesa.isActive("auth0|123456");
+await akxesa.getSecondaryAccounts("auth0|123456");
+```
 
-Copyright © 2026 @Ultracoconut. All rights reserved.
+## License
 
-Unauthorized copying, use, modification, distribution, or disclosure of this
-software, in whole or in part, is strictly prohibited without prior written
-permission from the copyright holder.
+MIT
