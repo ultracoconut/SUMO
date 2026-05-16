@@ -9,7 +9,7 @@ It provides a simple API to manage on-chain subscriptions, verify access, and ha
 
 - Create and manage subscriptions on-chain
 - Verify subscription access
-- Deterministic user identity resolution
+- Deterministic identity resolution
 - Supports both:
   - EVM wallet addresses (`0x...`)
   - External auth IDs (Auth0, Firebase, etc.)
@@ -90,7 +90,7 @@ console.log(access);
 {
   hasAccess: true,
   activePlanId: 1,
-  expiration: 1712345678n,
+  expiration: 1712345678,
   isPrimary: true
 }
 ```
@@ -99,8 +99,8 @@ console.log(access);
 
 ```ts
 await akxesa.authorizeAccount({
-  ownerUserId: "auth0|owner",
-  accountUserId: "auth0|secondary"
+  userId: "auth0|owner",
+  account: "auth0|secondary"
 });
 ```
 
@@ -108,8 +108,8 @@ await akxesa.authorizeAccount({
 
 ```ts
 await akxesa.revokeAccount({
-  ownerUserId: "auth0|owner",
-  accountUserId: "auth0|secondary"
+  userId: "auth0|owner",
+  account: "auth0|secondary"
 });
 ```
 
