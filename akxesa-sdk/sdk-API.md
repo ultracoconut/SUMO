@@ -6,7 +6,7 @@ Backend-focused TypeScript SDK for Node.js applications using the Akxesa Subscri
 
 # Identity Resolution
 
-All SDK methods accept `userId: string`.
+Both `userId` and `account` support:
 
 | Input Type | Example | Behavior |
 |------------|---------|----------|
@@ -31,8 +31,8 @@ All write methods return an ethers `TransactionResponse`.
 |--------|--------|---------|-------------|-------------|
 | createSubscription | `userId`, `planId`, `duration?` | `TransactionResponse` | Issuer only | Creates a subscription |
 | extendSubscription | `userId`, `extraDuration` | `TransactionResponse` | Issuer only | Extends a subscription |
-| authorizeAccount | `ownerUserId`, `accountUserId` | `TransactionResponse` | Issuer only | Authorizes a secondary account |
-| revokeAccount | `ownerUserId`, `accountUserId` | `TransactionResponse` | Issuer only | Revokes a secondary account |
+| authorizeAccount | `userId`, `account` | `TransactionResponse` | Issuer only | Authorizes a secondary account |
+| revokeAccount | `userId`, `account` | `TransactionResponse` | Issuer only | Revokes a secondary account |
 | changeIssuer | `newIssuer` | `TransactionResponse` | Issuer only | Updates contract issuer |
 | changePlan | `userId`, `newPlanId` | `TransactionResponse` | Issuer only | Changes subscription plan |
 
