@@ -23,13 +23,13 @@ export interface ExtendSubscriptionParams {
 }
 
 export interface AuthorizeAccountParams {
-  ownerUserId: string;
-  accountUserId: string;
+  userId: string;
+  account: string;
 }
 
 export interface RevokeAccountParams {
-  ownerUserId: string;
-  accountUserId: string;
+  userId: string;
+  account: string;
 }
 
 export interface ChangePlanParams {
@@ -63,18 +63,18 @@ export class Akxesa {
   // Identity Resolution
   // --------------------------------------------------
 
-  private resolveAddress(userId: string): string {
-    if (!userId || typeof userId !== "string") {
-      throw new Error("Invalid userId");
-    }
+  private resolveAddress(Id: string): string {
+    if (typeof Id !== "string" || Id.trim() === "") {
+     throw new Error("Invalid identity: must be non-empty string");
+}
 
     // Direct EVM address passthrough
-    if (userId.startsWith("0x")) {
-      return ethers.getAddress(userId);
+    if (Id.startsWith("0x")) {
+      return ethers.getAddress(Id);
     }
 
     // Deterministic derived address
-    return deriveAddress(userId);
+    return deriveAddress(Id);
   }
 
   // --------------------------------------------------
@@ -112,30 +112,30 @@ export class Akxesa {
   }
 
   async authorizeAccount({
-    ownerUserId,
-    accountUserId
+    userId,
+    account
   }: AuthorizeAccountParams) {
-    const owner = this.resolveAddress(ownerUserId);
-    const account = this.resolveAddress(accountUserId);
+    const owner = this.resolveAddress(userId);
+    const secondary = this.resolveAddress(account);
 
     const tx = await this.manager.authorizeAccount(
       owner,
-      account
+      secondary
     );
 
     return tx;
   }
 
   async revokeAccount({
-    ownerUserId,
-    accountUserId
+    userId,
+    account
   }: RevokeAccountParams) {
-    const owner = this.resolveAddress(ownerUserId);
-    const account = this.resolveAddress(accountUserId);
+    const owner = this.resolveAddress(userId);
+    const secondary = this.resolveAddress(account);
 
     const tx = await this.manager.revokeAccount(
       owner,
-      account
+      secondary
     );
 
     return tx;
