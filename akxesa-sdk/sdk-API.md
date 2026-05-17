@@ -6,7 +6,6 @@ Backend-focused TypeScript SDK for Node.js applications using the Akxesa Subscri
 
 # Identity Resolution
 
-Both `userId` and `account` support:
 
 | Input Type | Example | Behavior |
 |------------|---------|----------|
@@ -31,8 +30,8 @@ All write methods return an ethers `TransactionResponse`.
 |--------|--------|---------|-------------|-------------|
 | createSubscription | `userId`, `planId`, `duration?` | `TransactionResponse` | Issuer only | Creates a subscription |
 | extendSubscription | `userId`, `extraDuration` | `TransactionResponse` | Issuer only | Extends a subscription |
-| authorizeAccount | `userId`, `account` | `TransactionResponse` | Issuer only | Authorizes a secondary account |
-| revokeAccount | `userId`, `account` | `TransactionResponse` | Issuer only | Revokes a secondary account |
+| authorizeAccount | `userId`, `secondaryId` | `TransactionResponse` | Issuer only | Authorizes a secondary account |
+| revokeAccount | `userId`, `secondaryId` | `TransactionResponse` | Issuer only | Revokes a secondary account |
 | changeIssuer | `newIssuer` | `TransactionResponse` | Issuer only | Updates contract issuer |
 | changePlan | `userId`, `newPlanId` | `TransactionResponse` | Issuer only | Changes subscription plan |
 
@@ -41,7 +40,7 @@ All write methods return an ethers `TransactionResponse`.
 
 | Method | Inputs | Returns | Description |
 |--------|--------|---------|-------------|
-| getAccess | `userId` | `AccessData` | Returns access information |
+| getAccess | `id` | `AccessData` | Returns access information |
 | getSecondaryAccounts | `userId` | `string[]` | Returns secondary accounts |
 | hasFreeSlot | `userId` | `boolean` | Returns whether another account can be added |
 | hasSubscription | `userId` | `boolean` | Returns whether subscription exists |
@@ -74,6 +73,6 @@ Returned by `getAccess()`.
 | expiresAt | `userId` | `bigint` | Subscription expiration |
 | planId | `userId` | `bigint` | Active plan ID |
 | modificationCount | `userId` | `bigint` | Used modification count |
-| linkedToOwner | `userId` | `string` | Linked owner address |
+| linkedToOwner | `secondaryId` | `string` | Linked owner address |
 
 
