@@ -35,7 +35,7 @@ const akxesa = new Akxesa({
 
 ## Identity
 
-Akxesa supports two types of user identifiers:
+Akxesa supports two types of identifiers:
 
 1. EVM Address (direct usage)
 
@@ -100,16 +100,16 @@ console.log(access);
 ```ts
 await akxesa.authorizeAccount({
   userId: "auth0|owner",
-  account: "auth0|secondary"
+  secondaryId: "auth0|secondary"
 });
 ```
 
-## Revoke account
+## Revoke Account
 
 ```ts
 await akxesa.revokeAccount({
   userId: "auth0|owner",
-  account: "auth0|secondary"
+  secondaryId: "auth0|secondary"
 });
 ```
 
