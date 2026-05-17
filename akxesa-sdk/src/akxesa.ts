@@ -24,12 +24,12 @@ export interface ExtendSubscriptionParams {
 
 export interface AuthorizeAccountParams {
   userId: string;
-  account: string;
+  secondaryId: string;
 }
 
 export interface RevokeAccountParams {
   userId: string;
-  account: string;
+  secondaryId: string;
 }
 
 export interface ChangePlanParams {
@@ -63,18 +63,18 @@ export class Akxesa {
   // Identity Resolution
   // --------------------------------------------------
 
-  private resolveAddress(Id: string): string {
-    if (typeof Id !== "string" || Id.trim() === "") {
+  private resolveAddress(id: string): string {
+    if (typeof id !== "string" || id.trim() === "") {
      throw new Error("Invalid identity: must be non-empty string");
 }
 
     // Direct EVM address passthrough
-    if (Id.startsWith("0x")) {
-      return ethers.getAddress(Id);
+    if (id.startsWith("0x")) {
+      return ethers.getAddress(id);
     }
 
     // Deterministic derived address
-    return deriveAddress(Id);
+    return deriveAddress(id);
   }
 
   // --------------------------------------------------
@@ -113,10 +113,10 @@ export class Akxesa {
 
   async authorizeAccount({
     userId,
-    account
+    secondaryId
   }: AuthorizeAccountParams) {
     const owner = this.resolveAddress(userId);
-    const secondary = this.resolveAddress(account);
+    const secondary = this.resolveAddress(secondaryId);
 
     const tx = await this.manager.authorizeAccount(
       owner,
@@ -128,10 +128,10 @@ export class Akxesa {
 
   async revokeAccount({
     userId,
-    account
+    secondaryId
   }: RevokeAccountParams) {
     const owner = this.resolveAddress(userId);
-    const secondary = this.resolveAddress(account);
+    const secondary = this.resolveAddress(secondaryId);
 
     const tx = await this.manager.revokeAccount(
       owner,
@@ -156,9 +156,8 @@ export class Akxesa {
   }
 
   async changeIssuer(newIssuer: string) {
-    const tx = await this.manager.changeIssuer(
-      ethers.getAddress(newIssuer)
-    );
+    const issuer = this.resolveAddress(newIssuer);
+    const tx = await this.manager.changeIssuer(issuer);
 
     return tx;
   }
@@ -167,8 +166,8 @@ export class Akxesa {
   // Read Methods
   // --------------------------------------------------
 
-  async getAccess(userId: string) {
-    const account = this.resolveAddress(userId);
+  async getAccess(id: string) {
+    const account = this.resolveAddress(id);
 
     const access = await this.manager.getAccess(account);
 
@@ -254,8 +253,8 @@ export class Akxesa {
     return await this.manager.modificationCount(owner);
   }
 
-  async linkedToOwner(userId: string) {
-    const account = this.resolveAddress(userId);
+  async linkedToOwner(secondaryId: string) {
+    const account = this.resolveAddress(secondaryId);
 
     return await this.manager.linkedToOwner(account);
   }
