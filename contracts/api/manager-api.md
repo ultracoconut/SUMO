@@ -9,6 +9,7 @@ Manages subscriptions, account authorization, plans, and access verification for
 |---------|--------|---------|-------------|-------------|
 | createSubscription | `address owner`, `uint256 planId`, `uint256 duration` | — | Issuer only | Creates a new subscription for the owner. |
 | extendSubscription | `address owner`, `uint256 extraDuration` | — | Issuer only | Extends an existing subscription. |
+| cancelSubscription | `address owner` | — | Issuer only | Cancels an active subscription by setting its expiration to the current timestamp. |
 | authorizeAccount | `address owner`, `address account` | — | Issuer only | Authorizes a secondary account. |
 | revokeAccount | `address owner`, `address account` | — | Issuer only | Revokes a secondary account and consumes a modification. |
 | changeIssuer | `address newIssuer` | — | Issuer only | Updates the issuer. |
