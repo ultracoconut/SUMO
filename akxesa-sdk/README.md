@@ -67,13 +67,20 @@ const receipt = await tx.wait();
 console.log("Block:", receipt.blockNumber);
 ```
 
-
 ## Extend Subscription
 
 ```ts
 await akxesa.extendSubscription({
   userId: "auth0|123456",
   extraDuration: 3600
+});
+```
+
+## Cancel Subscription
+
+```ts
+await akxesa.cancelSubscription({
+  userId: "auth0|123456"
 });
 ```
 
