@@ -1,4 +1,6 @@
 import { Akxesa } from "@akxesa/sdk";
+import dotenv from "dotenv";
+dotenv.config();
 
 const akxesa = new Akxesa({
   rpcUrl: "https://eth-rpc-testnet.polkadot.io/",
