@@ -30,6 +30,7 @@ All write methods return an ethers `TransactionResponse`.
 |--------|--------|---------|-------------|-------------|
 | createSubscription | `userId`, `planId`, `duration?` | `TransactionResponse` | Issuer only | Creates a subscription |
 | extendSubscription | `userId`, `extraDuration` | `TransactionResponse` | Issuer only | Extends a subscription |
+| cancelSubscription | `userId` | `TransactionResponse` | Issuer only | Cancels an active subscription |
 | authorizeAccount | `userId`, `secondaryId` | `TransactionResponse` | Issuer only | Authorizes a secondary account |
 | revokeAccount | `userId`, `secondaryId` | `TransactionResponse` | Issuer only | Revokes a secondary account |
 | changeIssuer | `newIssuer` | `TransactionResponse` | Issuer only | Updates contract issuer |
