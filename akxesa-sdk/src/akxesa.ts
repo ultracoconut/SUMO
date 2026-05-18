@@ -22,6 +22,10 @@ export interface ExtendSubscriptionParams {
   extraDuration: number;
 }
 
+export interface CancelSubscriptionParams {
+  userId: string;
+}
+
 export interface AuthorizeAccountParams {
   userId: string;
   secondaryId: string;
@@ -107,6 +111,18 @@ export class Akxesa {
       owner,
       extraDuration
     );
+
+    return tx;
+  }
+
+  async cancelSubscription({
+    userId
+  }: CancelSubscriptionParams) {
+  const owner = this.resolveAddress(userId);
+
+  const tx = await this.manager.cancelSubscription(
+    owner
+  );
 
     return tx;
   }
