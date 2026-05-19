@@ -23,6 +23,7 @@ Install the Akxesa SDK via npm:
 
 ```bash
 npm install akxesa-sdk
+```
 
 ## Setup
 
