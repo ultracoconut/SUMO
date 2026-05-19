@@ -1,5 +1,5 @@
 {
-  "name": "@akxesa/sdk",
+  "name": "akxesa-sdk",
   "version": "0.1.0",
   "description": "Akxesa SDK - deterministic SaaS access control using on-chain subscriptions",
   "type": "module",
@@ -28,14 +28,34 @@
     "backend",
     "sdk"
   ],
-  "author": "@Ultracoconut",
+  "author": "Ultracoconut",
   "license": "MIT",
   "dependencies": {
     "ethers": "^6.0.0"
   },
+
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/ultracoconut/akxesa.git"
+  },
+
+  "homepage": "https://akxesa.com",
+
+  "bugs": {
+  "url": "https://github.com/ultracoconut/akxesa/issues"
+  },
+
+  "publishConfig": {
+  "access": "public"
+  },
+
   "devDependencies": {
     "@types/node": "^20.0.0",
     "tsx": "^4.0.0",
     "typescript": "^5.9.3"
-  }
+  },
+
+  "engines": {
+  "node": ">=18"
+}
 }
