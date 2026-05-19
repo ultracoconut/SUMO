@@ -1,4 +1,4 @@
-import { Akxesa } from "@akxesa/sdk";
+import { Akxesa } from "akxesa-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
