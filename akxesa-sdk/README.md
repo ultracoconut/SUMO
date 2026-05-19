@@ -19,12 +19,15 @@ It provides a simple API to manage on-chain subscriptions, verify access, and ha
 
 ## Installation
 
-Coming soon on npm.
+Install the Akxesa SDK via npm:
+
+```bash
+npm install akxesa-sdk
 
 ## Setup
 
 ```ts
-import { Akxesa } from "@akxesa/sdk";
+import { Akxesa } from "akxesa-sdk";
 
 const akxesa = new Akxesa({
   rpcUrl: "https://eth-rpc-testnet.polkadot.io/",
