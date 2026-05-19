@@ -39,13 +39,13 @@ Press ENTER to begin...
 
   console.log("\nConnecting to network...\n");
 
-  const TOTAL = 17;
+  const TOTAL = 18;
   let s = 1;
 
   // ----------------------------------
-  // MANAGER CONFIGURATION
+  // MANAGER INFO
   // ----------------------------------
-  step(s++, TOTAL, "Loading manager configuration");
+  step(s++, TOTAL, "Fetching manager info");
 
   const [
     issuer,
@@ -80,11 +80,33 @@ Press ENTER to begin...
   // ----------------------------------
   step(s++, TOTAL, "Preparing demo identities");
 
-  const owner = "auth0|00012324";
-  const secondary = "auth0|00054323";
+  const owner = "auth0|00012319";
+  const secondary = "auth0|00054319";
 
   console.log({ owner, secondary });
 
+  
+  // ----------------------------------
+  // CHECK EXISTING SUBSCRIPTION
+  // ----------------------------------
+  step(s++, TOTAL, "Checking existing subscription");
+
+  const alreadyExists =
+    await akxesa.hasSubscription(owner);
+
+  console.log({
+    hasSubscription: alreadyExists
+  });
+
+  if (alreadyExists) {
+  console.log(`
+    A subscription already exists for this demo identity.
+    Please change the owner identity and try again.
+  `);
+
+    return;
+  }
+  
   // ----------------------------------
   // CREATE SUBSCRIPTION
   // ----------------------------------
