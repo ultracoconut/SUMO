@@ -2,9 +2,6 @@
 
 Akxesa lets you verify subscriptions on-chain while keeping your existing authentication systems and backend architecture.
 
-No wallets. No signatures. No subscription databases.
-
-
 ## ⚡ Quickstart
 
 ### 1. Create your SubscriptionManager
